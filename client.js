@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-client.login(process.inv.TOKEN).then(() => {
+client.login(process.env.TOKEN).then(() => {
     console.log("Loaded up");
 }).catch(err => {
     console.log("Error logging in:\n" + err);
