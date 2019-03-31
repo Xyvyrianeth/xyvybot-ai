@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-client.login("NTYxNTc4NzkwODM3Mjg5MDAy.XKA9UQ.L1Gj68z3sKefZaVS4h2smtcuCLE").then(() => {
+client.login(process.inv.TOKEN).then(() => {
     console.log("Loaded up");
 }).catch(err => {
     console.log("Error logging in:\n" + err);
