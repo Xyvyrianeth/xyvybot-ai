@@ -11,8 +11,8 @@ client.on("ready", () => {
 })
 // exports.client = client;
 
-// var commands = require("./commands.js");
+var { respond } = require("./respond.js");
 
 client.on('message', message => {
-    // response(message);
+    respond(message);
 });
