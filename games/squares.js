@@ -89,7 +89,21 @@ exports.myTurn = function(channel) {
     spaces.sort((a, b) => {
         return b[0] - a[0];
     });
-    let space = spaces[Math.random() * game.P | 0];
+    let priorities = [];
+    for (let i = 0; i < spaces.length; i++)
+    {
+        if (!priorities.includes(spaces[0][0]))
+        {
+            priorities.push(spaces[0][0]);
+        }
+    }
+    let priority = priorities.sort((a, b) => {
+        return b - a;
+    })[Math.random() * game.P | 0];
+    spaces.filter(space => {
+        return space[0] == priority;
+    });
+    let space = spaces[Math.random() * spaces.length | 0];
     game.board[space[1]][space[2]] = 0;
     return (space[1] + 1) + (space[2] + 10).toString(20);
 }
