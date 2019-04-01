@@ -1,4 +1,4 @@
-var version = "1.0.0.11";
+var version = "1.0.0.12";
 
 const Discord = require("discord.js");
 
@@ -32,12 +32,12 @@ function respond(message) {
             {
                 delete AIs.channels[message.channel.id];
             }
-
+            else
             if (message.content == "<@561578790837289002>")
             {
                 sendChat(`x!${AIs.channels[message.channel.id].game} start`);
             }
-
+            else
             if (message.author.id == "398606274721480725")
             {
                 if (message.content.startsWith("The game has started!"))
@@ -58,7 +58,7 @@ function respond(message) {
                         AIs.channels[message.channel.id].timer = 10 * 60 * 5;
                     }
                 }
-
+                else
                 if (message.content == "It is <@561578790837289002>'s turn.")
                 {
                     AIs.channels[message.channel.id].enemyTurn = false;
@@ -69,23 +69,23 @@ function respond(message) {
                         AIs.channels[message.channel.id].timer = 10 * 60 * 5;
                     }, 5000);
                 }
-
+                else
                 if (message.content == `It is <@${AIs.channels[message.channel.id].opponent}>'s turn.`)
                 {
                     AIs.channels[message.channel.id].enemyTurn = true;
                 }
-
+                else
                 if (/^<@[0-9]{1,}> has won!$/.test(message.content))
                 {
                     delete AIs.channels[message.channel.id];
                 }
             }
-
+            else
             if (message.author.id == AIs.channels[message.channel.id].opponent && AIs.channels[message.channel.id].enemyTurn && /^([a-j] ?(?:10|[1-9])|(?:10|[1-9]) ?[a-j])$/i.test(message.content))
             {
                 AIs[AIs.channels[message.channel.id].game].enemyTurn(message.channel.id, message.content);
             }
-
+            else
             if (message.content == `x!${AIs.channels[message.channel.id].game} forfeit`)
             {
                 delete AIs.channels[message.channel.id];
