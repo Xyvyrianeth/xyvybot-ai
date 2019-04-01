@@ -1,15 +1,15 @@
-var version = "1.0.0.0";
+var version = "1.0.0.1";
 
 const Discord = require("discord.js");
 
 var admins = "357700219825160194".split(' ');
 
 var AIs = {
-    // connect4: require("/app/games/connect4.js"),
-    squares: require("/app/games/squares.js"),
-    // othello: require("/app/games/othello.js"),
-    // gomoku: require("/app/games/gomoku.js"),
-    channels: require("/app/games/channels.js").channels
+    // connect4: require("./games/connect4.js"),
+    squares: require("app/games/squares.js"),
+    // othello: require("./games/othello.js"),
+    // gomoku: require("./games/gomoku.js"),
+    channels: require("app/games/channels.js").channels
 }
 
 function botError(message, err) {
@@ -106,7 +106,8 @@ function respond(message) {
             AIs.channels[message.channel.id] = {
                 opponent: message.author.id,
                 game: message.content.split(' ')[0].substring(2),
-                timer: 10 * 60 * 15
+                timer: 10 * 60 * 15,
+                board: AIs.channels[message.content.split(' ')[0].substring(2)].newGame()
             }
         }
     }
@@ -116,7 +117,7 @@ function respond(message) {
         let execute = message.content.substring(11, message.content.length - 3);
         try
         {
-            sendChat("```js\n" + JSON.stringify(eval(execute)) + "```");
+            sendChat("```JS\n" + JSON.stringify(eval(execute)) + "```");
         }
         catch (err)
         {
