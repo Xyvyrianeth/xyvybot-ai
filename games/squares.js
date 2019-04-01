@@ -99,7 +99,7 @@ exports.myTurn = function(channel) {
     }
     let priority = priorities.sort((a, b) => {
         return b - a;
-    })[Math.random() * game.P | 0];
+    })[Math.random() * (game.P < priorities.length ? game.P : priorities.length) | 0];
     spaces = spaces.filter(space => {
         return space[0] == priority;
     });
