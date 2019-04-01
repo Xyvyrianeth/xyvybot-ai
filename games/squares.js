@@ -2,16 +2,21 @@ const { channels } = require("/app/games/channels.js");
 
 exports.newGame = function() {
     return [
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false],
-    	[false, false, false, false, false, false, false, false, false, false]
+        [
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false, false, false, false]
+        ],
+        [0, 1, Math.random() * 10 + 5 | 0, Math.random() * 40 + 100 | 0],
+        [0, 1, Math.random() * 10 + 5 | 0, Math.random() * 40 + 100 | 0],
+        Math.random() * 3 | 0
     ];
 }
 
