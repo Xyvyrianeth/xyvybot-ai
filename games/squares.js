@@ -1,4 +1,4 @@
-const { channels } = require("./games/channels.js");
+const { channels } = require("/app/games/channels.js");
 
 exports.newGame = function() {
     return [
