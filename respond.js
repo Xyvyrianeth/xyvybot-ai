@@ -1,4 +1,4 @@
-var version = "1.0.0.8";
+var version = "1.0.0.9";
 
 const Discord = require("discord.js");
 
@@ -160,7 +160,7 @@ function respond(message) {
                 errs.push(err.stack.split('\n')[i]);
             }
         }
-        botError(message, err);
+        botError(message, errs);
     }
 }
 
