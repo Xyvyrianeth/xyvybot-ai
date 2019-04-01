@@ -14,12 +14,6 @@ var AIs = {
 
 function botError(message, err) {
     message.channel.send([
-        `\`\`\`Server: ${message.channel.guild.name} (${message.channel.guild.id})`,
-        `Channel: ${message.channel.name} (${message.channel.id})\`\`\``,
-        `\`\`\`User errored on:\`\`\`<@${message.author.id}>\n`,
-        `\`\`\``,
-        `Message sent:\`\`\`\`\`\``,
-        `${message.content.replace(/`/g, "\\\`")}\`\`\``,
         `\`\`\``,
         `${err.join("\n")}\`\`\``
     ].join('\n'));
