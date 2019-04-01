@@ -9,7 +9,6 @@ client.login(process.env.TOKEN).then(() => {
 client.on("ready", () => {
     console.log("and ready to go!");
 })
-// exports.client = client;
 
 var { respond } = require("./respond.js");
 
