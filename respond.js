@@ -1,4 +1,4 @@
-var version = "1.0.0.17";
+var version = "1.0.0.18";
 
 const Discord = require("discord.js");
 
@@ -76,6 +76,11 @@ function respond(message) {
                 }
                 else
                 if (/^<@[0-9]{1,}> has won!$/.test(message.content))
+                {
+                    delete AIs.channels[message.channel.id];
+                }
+                else
+                if (message.startsWith("Whoops"))
                 {
                     delete AIs.channels[message.channel.id];
                 }
