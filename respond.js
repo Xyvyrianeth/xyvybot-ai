@@ -2,13 +2,11 @@ var version = "1.0.0.0";
 
 const Discord = require("discord.js");
 
-var { client,config } = require("./client.js");
-
 var admins = "357700219825160194".split(' ');
 
 var AIs = {
     // connect4: require("./games/connect4.js"),
-    // squares: require("./games/squares.js"),
+    squares: require("./games/squares.js"),
     // othello: require("./games/othello.js"),
     // gomoku: require("./games/gomoku.js"),
     channels: require("./games/channels.js").channels
@@ -43,9 +41,38 @@ function respond(message) {
         }
     }
 
-    if (/^x!(connect4|squares|othello|gomoku) start$/i.test(message.content))
+    if (AIs.channels.hasOwnProperty(message.channel.id))
     {
-        if (!AIs.channels.hasOwnProperty(message.channel.id))
+        if (/^x!(connect4|squares|othello|gomoku) start$/i.test(message.content) && message.author.id !== "561578790837289002")
+        {
+            delete AIs.channels[message.channel.id];
+        }
+
+        if (message.channel.id == "398606274721480725")
+        {
+            if (message.content == "It is <@561578790837289002>'s turn.")
+            {
+                AIs.channels[message.channel.id].enemyTurn = false;
+                let response = AIs[AIs.channels[message.channel.id].game].myTurn(message.channel.id);
+
+                setTimeout(function() {
+                    sendChat(response);
+                }, 5000);
+            }
+            if (message.content == `It is <@${AIs.channels[message.channel.id].opponent}>'s turn.`)
+            {
+                AIs.channels[message.channel.id].enemyTurn = true;
+            }
+        }
+
+        if (message.author.id == AIs.channels[message.channel.id].opponent && AIs.channels[message.channel.id].enemyTurn && /^([a-j] ?(?:10|[1-9])|(?:10|[1-9]) ?[a-j])$/i.test(message.content))
+        {
+            AIs[AIs.channels[message.channel.id].game].enemyTurn(message.channel.id, message.content);
+        }
+    }
+    else
+    {
+        if (/^x!(connect4|squares|othello|gomoku) start$/i.test(message.content))
         {
             AIs.channels[message.channel.id] = {
                 opponent: message.author.id,
@@ -53,32 +80,11 @@ function respond(message) {
                 timer: 10 * 60 * 15
             }
         }
-        else
-        {
-            delete AIs.channels[message.channel.id];
-        }
-    }
-
-    if (/^$/.test(message.content))
-    {
-        if (AIs.channels.hasOwnProperty(message.channel.id))
-        {
-            sendChat(`x!${AIs.channels[message.channel.id].game} start`);
-            AIs.channels[message.channel.id].game = AIs[AIs.channels[message.channel.id].game].newGame();
-        }
-    }
-
-    if (message.author.id == "398606274721480725")
-    {
-        if (/^(connect4|squares|othello|gomoku)_[0-2]_[0-9]{1,}(|vs[0-9]{1,})\.png$/.test(img))
-        {
-
-        }
     }
     
     if (admins.includes(message.author.id) && message.content.startsWith("x!js ```js\n") && message.content.endsWith("```"))
     {
-        let execute = message.substring(11, message.content.length - 3);
+        let execute = message.content.substring(11, message.content.length - 3);
         try
         {
             sendChat("```js\n" + JSON.stringify(eval(execute)) + "```");
