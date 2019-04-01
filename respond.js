@@ -1,4 +1,4 @@
-var version = "1.0.0.10";
+var version = "1.0.0.11";
 
 const Discord = require("discord.js");
 
@@ -95,11 +95,15 @@ function respond(message) {
         {
             if (/^x!(connect4|squares|othello|gomoku) start$/i.test(message.content))
             {
+                newGame = AIs[message.content.split(' ')[0].substring(2)].newGame();
                 AIs.channels[message.channel.id] = {
                     opponent: message.author.id,
                     game: message.content.split(' ')[0].substring(2),
                     timer: 10 * 60 * 15,
-                    board: AIs[message.content.split(' ')[0].substring(2)].newGame()
+                    board: newGame[0],
+                    O: newGame[1],
+                    D: newGame[2],
+                    P: newGame[3]
                 }
             }
         }
