@@ -5,11 +5,11 @@ const Discord = require("discord.js");
 var admins = "357700219825160194".split(' ');
 
 var AIs = {
-    // connect4: require("./games/connect4.js"),
-    squares: require("app/games/squares.js"),
-    // othello: require("./games/othello.js"),
-    // gomoku: require("./games/gomoku.js"),
-    channels: require("app/games/channels.js").channels
+    // connect4: require("/app/games/connect4.js"),
+    squares: require("/app/games/squares.js"),
+    // othello: require("/app/games/othello.js"),
+    // gomoku: require("/app/games/gomoku.js"),
+    channels: require("/app/games/channels.js").channels
 }
 
 function botError(message, err) {
