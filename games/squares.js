@@ -64,29 +64,27 @@ exports.myTurn = function(channel) {
                             game.board[y               ][x + (s * dir[1])],
                             game.board[y + (s * dir[0])][x + (s * dir[1])]
                         ];
+                        // Offense
                         if (corners.filter(p => p === 1).length === 0)
                         {
-                            space[0] += [0, 1, 10, 100][corners.filter(p => p === 0).length];
+                            space[0] += game.O[corners.filter(p => p === 0).length];
+                        }
+                        // Defense
+                        if (corners.filter(p => p === 0).length === 1)
+                        {
+                            space[0] += game.D[corners.filter(p => p === 1).length];
                         }
                     }
                 }
-                if (spaces.length === 0)
-                {
-                    spaces.push(space);
-                }
-                if (spaces[0][0] < space[0])
-                {
-                    spaces = [space];
-                }
-                if (spaces[0][0] == space[0])
-                {
-                    spaces.push(space);
-                }
+                spaces.push(space);
             }
 		}
 	}
     
-    let space = spaces[Math.random() * spaces.length | 0];
+    spaces.sort((a, b) => {
+        return b[0] - a[0];
+    });
+    let space = spaces[Math.random() * game.P | 0];
     game.board[space[1]][space[2]] = 0;
     return (space[1] + 1) + (space[2] + 10).toString(20);
 }
