@@ -1,4 +1,4 @@
-var version = "1.0.0.2";
+var version = "1.0.0.3";
 
 const Discord = require("discord.js");
 
@@ -112,12 +112,12 @@ function respond(message) {
         }
     }
     
-    if (admins.includes(message.author.id) && message.content.startsWith("x!js ```js\n") && message.content.endsWith("```"))
+    if (admins.includes(message.author.id) && message.content.startsWith("x!JS ```js\n") && message.content.endsWith("```"))
     {
         let execute = message.content.substring(11, message.content.length - 3);
         try
         {
-            sendChat("```JS\n" + JSON.stringify(eval(execute)) + "```");
+            sendChat("```js\n" + JSON.stringify(eval(execute)) + "```");
         }
         catch (err)
         {
