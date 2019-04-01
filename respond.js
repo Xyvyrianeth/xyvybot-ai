@@ -1,4 +1,4 @@
-var version = "1.0.3.0";
+var version = "1.0.3.1";
 
 const Discord = require("discord.js");
 
