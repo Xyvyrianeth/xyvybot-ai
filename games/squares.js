@@ -92,9 +92,9 @@ exports.myTurn = function(channel) {
     let priorities = [];
     for (let i = 0; i < spaces.length; i++)
     {
-        if (!priorities.includes(spaces[0][0]))
+        if (!priorities.includes(spaces[i][0]))
         {
-            priorities.push(spaces[0][0]);
+            priorities.push(spaces[i][0]);
         }
     }
     let priority = priorities.sort((a, b) => {
