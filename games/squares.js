@@ -88,7 +88,7 @@ exports.myTurn = function(channel) {
     
     let space = spaces[Math.random() * spaces.length | 0];
     game.board[space[1]][space[2]] = 0;
-    return space[1] + (space[2] + 10).toString(20);
+    return (space[1] + 1) + (space[2] + 10).toString(20);
 }
 
 exports.enemyTurn = function(channel, spot) {
