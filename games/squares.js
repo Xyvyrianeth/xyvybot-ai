@@ -75,7 +75,7 @@ exports.myTurn = function(channel) {
                             space[0] += game.O[corners.filter(p => p === 0).length];
                         }
                         // Defense
-                        if (corners.filter(p => p === 0).length === 1)
+                        if (corners.filter(p => p === 0).length === 0)
                         {
                             space[0] += game.D[corners.filter(p => p === 1).length];
                         }
