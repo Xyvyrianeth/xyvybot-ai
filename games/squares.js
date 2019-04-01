@@ -1,4 +1,4 @@
-const { channels } = require("/app/games/channels.js");
+const { channels } = require("./games/channels.js");
 
 exports.newGame = function() {
     return [
@@ -84,7 +84,7 @@ exports.myTurn = function(channel) {
     
     let space = spaces[Math.random() * topSpaces.length | 0];
     game.board[space[1]][space[2]] = 0;
-	return space[1] + (space[2] + 10).toString(20);
+    return space[1] + (space[2] + 10).toString(20);
 }
 
 exports.enemyTurn = function(channel, spot) {
@@ -92,6 +92,6 @@ exports.enemyTurn = function(channel, spot) {
     Spot = [spot.match(/[0-9]{1,2}/)[0] - 1, 'abcdefghij'.indexOf(spot.toLowerCase().match(/[a-j]/)[0])]
     if (board[Spot[0]][Spot[1]] === false)
     {
-	    board[Spot[0]][Spot[1]] = 1;
+        board[Spot[0]][Spot[1]] = 1;
     }
 }
