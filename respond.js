@@ -1,4 +1,4 @@
-var version = "1.0.0.9";
+var version = "1.0.0.10";
 
 const Discord = require("discord.js");
 
@@ -84,6 +84,11 @@ function respond(message) {
             if (message.author.id == AIs.channels[message.channel.id].opponent && AIs.channels[message.channel.id].enemyTurn && /^([a-j] ?(?:10|[1-9])|(?:10|[1-9]) ?[a-j])$/i.test(message.content))
             {
                 AIs[AIs.channels[message.channel.id].game].enemyTurn(message.channel.id, message.content);
+            }
+
+            if (message.content == `x!${AIs.channels[message.channel.id].game} forfeit`)
+            {
+                delete AIs.channels[message.channel.id];
             }
         }
         else
