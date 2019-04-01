@@ -1,4 +1,4 @@
-var version = "1.0.0.16";
+var version = "1.0.0.17";
 
 const Discord = require("discord.js");
 
@@ -49,13 +49,13 @@ function respond(message) {
         
                         setTimeout(function() {
                             sendChat(response);
-                            AIs.channels[message.channel.id].timer = 10 * 60 * 5;
+                            AIs.channels[message.channel.id].timer = 6000;
                         }, 5000);
                     }
                     else
                     {
                         AIs.channels[message.channel.id].enemyTurn = true;
-                        AIs.channels[message.channel.id].timer = 10 * 60 * 5;
+                        AIs.channels[message.channel.id].timer = 6000;
                     }
                 }
                 else
@@ -66,7 +66,7 @@ function respond(message) {
 
                     setTimeout(function() {
                         sendChat(response);
-                        AIs.channels[message.channel.id].timer = 10 * 60 * 5;
+                        AIs.channels[message.channel.id].timer = 6000;
                     }, 5000);
                 }
                 else
@@ -102,7 +102,7 @@ function respond(message) {
                     AIs.channels[message.channel.id] = {
                         opponent: message.author.id,
                         game: game,
-                        timer: 10 * 60 * 15,
+                        timer: 9000,
                         board: newGame[0],
                         O: newGame[1],
                         D: newGame[2],
