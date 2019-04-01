@@ -24,7 +24,7 @@ exports.myTurn = function(channel) {
 		{
             if (game.board[y][x] === false)
             {
-                space = [0, y, x];
+                let space = [0, y, x];
                 for (let d = 0; d < 4; d++)
                 {
                     let dir = [
