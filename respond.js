@@ -1,4 +1,4 @@
-var version = "1.0.0.7";
+var version = "1.0.0.8";
 
 const Discord = require("discord.js");
 
@@ -148,6 +148,18 @@ function respond(message) {
     }
     catch (err)
     {
+        let errs = [];
+        for (let i = 0; i < err.stack.split('\n').length; i++)
+        {
+            if (err.stack.split('\n')[i].includes("at emitOne"))
+            {
+                break;
+            }
+            else
+            {
+                errs.push(err.stack.split('\n')[i]);
+            }
+        }
         botError(message, err);
     }
 }
