@@ -44,12 +44,10 @@ function respond(message) {
                 sendChat(`x!${AIs.channels[message.channel.id].game} start`);
             }
 
-            if (message.channel.id == "398606274721480725")
+            if (message.author.id == "398606274721480725")
             {
-                sendChat("1");
                 if (message.content.startsWith("The game has started!"))
                 {
-                    sendChat("2");
                     if (message.content.includes("<@561578790837289002> will be black"))
                     {
                         AIs.channels[message.channel.id].enemyTurn = false;
@@ -153,46 +151,6 @@ function respond(message) {
         botError(message, err);
     }
 }
-
-Object.defineProperty(Array.prototype, 'clone', {
-    value: function() {
-        return JSON.parse(JSON.stringify(this));
-    }
-});
-Object.defineProperty(Array.prototype, 'random', {
-    value: function(a) {
-        if (!a)
-        {
-            return this[Math.random() * this.length | 0];
-        }
-        else
-        {
-            let b = [];
-            let c = [];
-            if (this.length < a)
-            {
-                a = this.length;
-            }
-            for (let i = a; i--;)
-            {
-                let d = Math.random() * this.length | 0;
-                if (c.includes(d))
-                {
-                    i++;
-                }
-                else
-                {
-                    c.push(d);
-                }
-            }
-            for (let i = a; i--;)
-            {
-                b.push(this[c[i]]);
-            }
-            return b;
-        }
-    }
-});
 
 exports.version = version;
 exports.respond = respond;
