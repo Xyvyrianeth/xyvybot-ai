@@ -1,4 +1,4 @@
-var version = "1.0.0.18";
+var version = "1.0.1.1";
 
 const Discord = require("discord.js");
 
@@ -77,7 +77,7 @@ function respond(message) {
                     delete AIs.channels[message.channel.id];
                 }
                 else
-                if (message.startsWith("Whoops"))
+                if (message.content.startsWith("Whoops"))
                 {
                     delete AIs.channels[message.channel.id];
                 }
