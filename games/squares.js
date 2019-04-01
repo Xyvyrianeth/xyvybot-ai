@@ -70,6 +70,10 @@ exports.myTurn = function(channel) {
                         }
                     }
                 }
+                if (spaces.length === 0)
+                {
+                    spaces.push(space);
+                }
                 if (spaces[0][0] < space[0])
                 {
                     spaces = [space];
