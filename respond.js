@@ -1,4 +1,4 @@
-var version = "1.0.0.1";
+var version = "1.0.0.2";
 
 const Discord = require("discord.js");
 
@@ -107,7 +107,7 @@ function respond(message) {
                 opponent: message.author.id,
                 game: message.content.split(' ')[0].substring(2),
                 timer: 10 * 60 * 15,
-                board: AIs.channels[message.content.split(' ')[0].substring(2)].newGame()
+                board: AIs[message.content.split(' ')[0].substring(2)].newGame()
             }
         }
     }
