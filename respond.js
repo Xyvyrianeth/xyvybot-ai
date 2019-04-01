@@ -48,8 +48,30 @@ function respond(message) {
             delete AIs.channels[message.channel.id];
         }
 
+        if (message.content == "<@561578790837289002>")
+        {
+            sendChat(`x!${AIs.channels[message.channel.id].game} start`);
+        }
+
         if (message.channel.id == "398606274721480725")
         {
+            if (message.content.startsWith("The game has started!"))
+            {
+                if (message.content.match(/<@[0-9]{,1}>/g)[0] == "<@561578790837289002>")
+                {
+                    let response = AIs[AIs.channels[message.channel.id].game].myTurn(message.channel.id);
+    
+                    setTimeout(function() {
+                        sendChat(response);
+                    }, 5000);
+                }
+                else
+                {
+                    AIs.channels[message.channel.id].enemyTurn = true;
+                    AIs.channels[message.channel.id].timer = 10 * 60 * 5;
+                }
+            }
+
             if (message.content == "It is <@561578790837289002>'s turn.")
             {
                 AIs.channels[message.channel.id].enemyTurn = false;
@@ -57,11 +79,18 @@ function respond(message) {
 
                 setTimeout(function() {
                     sendChat(response);
+                    AIs.channels[message.channel.id].timer = 10 * 60 * 5;
                 }, 5000);
             }
+
             if (message.content == `It is <@${AIs.channels[message.channel.id].opponent}>'s turn.`)
             {
                 AIs.channels[message.channel.id].enemyTurn = true;
+            }
+
+            if (/^<@[0-9]{1,}> has won!$/.test(message.content))
+            {
+                delete AIs.channels[message.channel.id];
             }
         }
 
