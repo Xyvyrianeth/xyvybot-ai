@@ -1,4 +1,4 @@
-var version = "1.0.3.3";
+var version = "1.0.3.4";
 
 const Discord = require("discord.js");
 
@@ -88,7 +88,7 @@ function respond(message) {
                 AIs[AIs.channels[message.channel.id].game].enemyTurn(message.channel.id, message.content);
             }
             else
-            if (message.content == `x!${AIs.channels[message.channel.id].game} forfeit`)
+            if (message.content.split(' ')[0] == `x!${AIs.channels[message.channel.id].game}`) && "quit forfeit leave".split(' ').includes(message.content.split(' ')[1]))
             {
                 delete AIs.channels[message.channel.id];
             }
