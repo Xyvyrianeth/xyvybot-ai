@@ -14,8 +14,8 @@ exports.newGame = function() {
             [false, false, false, false, false, false, false, false, false, false],
             [false, false, false, false, false, false, false, false, false, false]
         ],
-        [0, Math.random() * 2 + 1, Math.random() * 21 + 5 | 0, Math.random() * 41 + 80 | 0],
-        [0, Math.random() * 2 + 1, Math.random() * 21 + 5 | 0, Math.random() * 41 + 80 | 0],
+        [1, Math.random() * 2 + 2, Math.random() * 21 + 5 | 0, Math.random() * 41 + 80 | 0],
+        [1, Math.random() * 2 + 2, Math.random() * 21 + 5 | 0, Math.random() * 41 + 80 | 0],
         Math.random() * 3 + 1 | 0
     ];
 }
