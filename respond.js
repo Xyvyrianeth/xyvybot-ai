@@ -1,4 +1,4 @@
-var version = "1.0.3.4";
+var version = "1.0.3.5";
 
 const Discord = require("discord.js");
 
@@ -42,7 +42,7 @@ function respond(message) {
             {
                 if (message.content.startsWith("The game has started!"))
                 {
-                    if (message.content.includes("<@561578790837289002> will be black"))
+                    if (message.content.includes("<@561578790837289002> will be dark"))
                     {
                         AIs.channels[message.channel.id].enemyTurn = false;
                         let response = AIs[AIs.channels[message.channel.id].game].myTurn(message.channel.id);
