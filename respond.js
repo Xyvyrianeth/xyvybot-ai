@@ -1,4 +1,4 @@
-var version = "1.0.3.5";
+var version = "1.0.3.6";
 
 const Discord = require("discord.js");
 
@@ -83,7 +83,7 @@ function respond(message) {
                 }
             }
             else
-            if (message.author.id == AIs.channels[message.channel.id].opponent && AIs.channels[message.channel.id].enemyTurn && /^([a-j] ?(?:10|[1-9])|(?:10|[1-9]) ?[a-j])$/i.test(message.content))
+            if (message.author.id == AIs.channels[message.channel.id].opponent && AIs.channels[message.channel.id].enemyTurn && AIs.channels[message.channel.id].regexp.test(message.content))
             {
                 AIs[AIs.channels[message.channel.id].game].enemyTurn(message.channel.id, message.content);
             }
@@ -95,19 +95,26 @@ function respond(message) {
         }
         else
         {
-            if (/^x![a-z0-9]{1,} start$/i.test(message.content))
+            if (message.author.id == "398606274721480725" && /^<@[0-9]{0,}> is now requesting a new game of (Squares)!$/.test(message.content))
             {
-                let game = message.content.split(' ')[0].substring(2);
+                let game = {
+                    "Squares": "squares",
+                    "Connect Four": "connect4",
+                    "Othello": "othello",
+                    "Gomoku": "gomoku",
+                    "3D Tic Tac Toe": "3dttt"
+                }[message.content.match(/(Squares)/)[0].substring(2)];
                 if (AIs.hasOwnProperty(game))
                 {
                     newGame = AIs[game].newGame();
                     AIs.channels[message.channel.id] = {
-                        opponent: message.author.id,
+                        opponent: message.content.match(/^<@[0-9]{0,}/).substring(2),
                         game: game,
                         board: newGame[0],
                         O: newGame[1],
                         D: newGame[2],
-                        P: newGame[3]
+                        P: newGame[3],
+                        regexp: newGame[4]
                     }
                 }
             }
