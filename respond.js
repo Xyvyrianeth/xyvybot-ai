@@ -1,4 +1,4 @@
-var version = "1.0.3.7";
+var version = "1.0.3.8";
 
 const Discord = require("discord.js");
 
@@ -108,7 +108,7 @@ function respond(message) {
                 {
                     newGame = AIs[game].newGame();
                     AIs.channels[message.channel.id] = {
-                        opponent: message.content.match(/^<@[0-9]{0,}/).substring(2),
+                        opponent: message.content.match(/^<@[0-9]{0,}/)[0].substring(2),
                         game: game,
                         board: newGame[0],
                         O: newGame[1],
