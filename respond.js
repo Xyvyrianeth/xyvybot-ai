@@ -1,4 +1,4 @@
-var version = "1.0.3.6";
+var version = "1.0.3.7";
 
 const Discord = require("discord.js");
 
@@ -103,7 +103,7 @@ function respond(message) {
                     "Othello": "othello",
                     "Gomoku": "gomoku",
                     "3D Tic Tac Toe": "3dttt"
-                }[message.content.match(/(Squares)/)[0].substring(2)];
+                }[message.content.match(/(Squares)/)[0]];
                 if (AIs.hasOwnProperty(game))
                 {
                     newGame = AIs[game].newGame();
